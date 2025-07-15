@@ -1,0 +1,87 @@
+{
+    "disk": {
+        "format": " {free}"
+    },
+
+    "memory": {
+        "format": " {used} / {total}Gib",
+        "interval": 3
+    },
+
+    "cpu": {
+        "format": "\uF4BC   {usage}%",
+        "interval": 3
+    },
+
+    "wlr/workspaces": {
+        "format": "{icon}"
+    },
+    
+    "hyprland/language": {
+        "format": " {short}"
+    },
+
+    "clock": {
+     "format": " {:%H:%M %d-%m-%Y}",
+     "tooltip-format": "<tt><small>{calendar}</small></tt>",
+     "calendar": {
+        "mode" : "month",
+        "mode-mon-col" : 3,
+        "weeks-pos": "right",
+        "on-scroll" : 1,
+        "format": {
+            "months": "<span color='#89b4fa'><b>{}</b></span>",
+            "today":"<span color='#a6e3a1'><b>{}</b></span>",
+            "weeks": "<span color='#b4befe'><b>{}</b></span>"
+        }
+    }
+    },
+
+    "network": {
+       "format": " {signaldBm}|{bandwidthTotalBits}",
+       "interval": 3
+    },
+
+    "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{volume}% {icon} {format_source}",
+        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format-bluetooth-muted": " {icon} {format_source}",
+        "format-muted": " {format_source}",
+        "format-source": "{volume}% ",
+        "format-source-muted": "",
+        "format-icons": {
+            "headphone": "",
+            "hands-free": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol"
+    },
+
+    "power-profiles-daemon": {
+        "format": "{icon}",
+        "tooltip-format": "Power profile: {profile} Driver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    
+    "custom/power": {
+        "format" : "⏻",
+		"tooltip": "Power PC",
+		"on-click": "wlogout"
+    },
+
+    "custom/menu": {
+        "format": "\uF345 ",
+        "tooltip": "disk"
+    }
+}    
