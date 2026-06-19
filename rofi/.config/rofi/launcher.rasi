@@ -1,0 +1,128 @@
+@import "theme.rasi"
+
+* {
+    bg-transparent: rgba(0, 0, 0, 0);
+}
+
+window {
+    transparency:   "real";
+    background-color: @bg-transparent;
+    location:       center;
+    anchor:         center;
+    width:          600px;
+    height:         480px;
+    x-offset:       0;
+    y-offset:       0;
+    border:         0px;
+    border-radius:  12px;
+    cursor:         "default";
+}
+
+mainbox {
+    background-color: @bg;
+    border:           1px;
+    border-color:     @border;
+    border-radius:    12px;
+    padding:          16px;
+    spacing:          12px;
+    children:         [inputbar, listview];
+}
+
+inputbar {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border;
+    border-radius:    8px;
+    padding:          6px 12px;
+    spacing:          8px;
+    children:         [icon-search, entry];
+}
+
+icon-search {
+    expand:     false;
+    str:        "";
+    font:       "CaskaydiaCove Nerd Font Mono 16";
+    text-color: @fg-dim;
+    vertical-align: 0.5;
+}
+
+entry {
+    font:             "CaskaydiaCove Nerd Font Mono 12";
+    text-color:       @fg;
+    placeholder:      "Type to search…";
+    placeholder-color: @overlay0;
+    background-color: transparent;
+    expand:           true;
+    padding:          2px 0;
+    cursor:           text;
+}
+
+listview {
+    background-color: transparent;
+    padding:          0;
+    spacing:          2px;
+    scrollbar:        false;
+    lines:            8;
+    columns:          1;
+    fixed-height:     true;
+    cycle:            false;
+    dynamic:          true;
+}
+
+element {
+    background-color: transparent;
+    text-color:       @fg;
+    padding:          6px 10px;
+    border-radius:    6px;
+    orientation:      horizontal;
+    spacing:          10px;
+    cursor:           default;
+}
+
+element selected {
+    background-color: @sel-bg;
+    text-color:       @sel-fg;
+}
+
+element-icon {
+    size:           24px;
+    border-radius:  4px;
+    vertical-align: 0.5;
+    margin:         0 4px 0 0;
+}
+
+element-text {
+    font:            "CaskaydiaCove Nerd Font Mono 11";
+    text-color:      inherit;
+    vertical-align:  0.5;
+}
+
+element selected element-text {
+    text-color: @sel-fg;
+}
+
+element-urgent {
+    background-color: @red;
+    text-color:       @bg-solid;
+    border-radius:    6px;
+}
+
+element-alternate {
+    background-color: rgba(49, 50, 68, 0.5);
+}
+
+element normal element-icon {
+    size: 24px;
+}
+
+element selected element-icon {
+    size: 24px;
+}
+
+error-message {
+    background-color: @red;
+    text-color:       @bg-solid;
+    padding:          8px;
+    border-radius:    6px;
+    font:             "CaskaydiaCove Nerd Font Mono 10";
+}
