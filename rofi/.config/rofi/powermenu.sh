@@ -13,7 +13,7 @@ CHOICE=$(printf "%s\n" "$LOCK" "$SUSPEND" "$LOGOUT" "$REBOOT" "$SHUTDOWN" \
            -theme ~/.config/rofi/powermenu.rasi)
 
 case "$CHOICE" in
-    "$LOCK")     swaylock ;;
+    "$LOCK")     hyprlock ;;
     "$SUSPEND")  loginctl suspend ;;
     "$LOGOUT")   hyprctl dispatch exit ;;
     "$REBOOT")   systemctl reboot ;;

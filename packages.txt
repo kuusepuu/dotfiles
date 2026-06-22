@@ -18,11 +18,13 @@ bash-completion
 # App launcher & power menu
 rofi
 papirus-icon-theme
-swaylock
+hyprlock
 
 # File manager
 thunar
 gvfs
+tumbler
+ffmpegthumbnailer
 
 # Screenshots
 grim
