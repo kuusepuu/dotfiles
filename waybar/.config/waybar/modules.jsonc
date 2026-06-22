@@ -1,87 +1,121 @@
 {
-    "disk": {
-        "format": " {free}"
+    // ── Hardware group (left pill: RAM + CPU + CPU temp) ──────────────────
+    "group/hardware": {
+        "orientation": "inherit",
+        "modules": ["memory", "cpu", "temperature"]
     },
 
     "memory": {
-        "format": "  {used} / {total}Gib",
-        "interval": 3
+        "format": " {used:0.1f}G  {percentage}%",
+        "tooltip-format": "{used:0.1f}G / {total:0.1f}G used",
+        "interval": 3,
+        "on-click": "kitty -e btop"
     },
 
     "cpu": {
-        "format": "\uF4BC   {usage}%",
+        "format": " {usage}%",
+        "tooltip-format": "{avg_frequency} GHz",
+        "interval": 3,
+        "on-click": "kitty -e btop"
+    },
+
+    "temperature": {
+        // hwmon3 = k10temp (AMD CPU) — verify with: cat /sys/class/hwmon/hwmon3/name
+        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
+        "critical-threshold": 85,
+        "format": " {temperatureC}°C",
+        "format-critical": " {temperatureC}°C",
         "interval": 3
     },
 
-    "wlr/workspaces": {
-        "format": "{icon}"
-    },
-    
-    "hyprland/language": {
-        "format": "   {short}"
+    // ── AMD discrete GPU (card1) ──────────────────────────────────────────
+    "custom/gpu": {
+        "exec": "~/.config/waybar/scripts/gpu.sh",
+        "return-type": "json",
+        "interval": 3,
+        "on-click": "lact"
     },
 
+    // ── Workspaces ────────────────────────────────────────────────────────
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "format": "{name}",
+        "on-click": "activate",
+        "on-scroll-up": "hyprctl dispatch workspace e-1",
+        "on-scroll-down": "hyprctl dispatch workspace e+1"
+    },
+
+    // ── Clock (center) ────────────────────────────────────────────────────
     "clock": {
-     "format": "  {:%H:%M | %d-%m-%Y}",
-     "tooltip-format": "<tt><small>{calendar}</small></tt>",
-     "calendar": {
-        "mode" : "month",
-        "mode-mon-col" : 3,
-        "weeks-pos": "right",
-        "on-scroll" : 1,
-        "format": {
-            "months": "<span color='#89b4fa'><b>{}</b></span>",
-            "today":"<span color='#a6e3a1'><b>{}</b></span>",
-            "weeks": "<span color='#b4befe'><b>{}</b></span>"
+        "format": " {:%H:%M}   {:%a %d %b}",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+            "weeks-pos": "right",
+            "on-scroll": 1,
+            "format": {
+                "months": "<span color='#89b4fa'><b>{}</b></span>",
+                "today":  "<span color='#a6e3a1'><b>{}</b></span>",
+                "weeks":  "<span color='#b4befe'><b>{}</b></span>"
+            }
         }
-    }
     },
 
-    "network": {
-       "format": "   {bandwidthTotalBits}",
-       "interval": 3
+    // ── Right modules ─────────────────────────────────────────────────────
+    "bluetooth": {
+        "format": " {status}",
+        "format-connected": " {device_alias}",
+        "format-connected-battery": " {device_alias}  {device_battery_percentage}%",
+        "format-off": " Off",
+        "tooltip-format": "{controller_alias} ({controller_address})\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\n\n{device_enumerate}",
+        "on-click": "blueman-manager"
+    },
+
+    "disk": {
+        "format": " {free}",
+        "tooltip-format": "{used} / {total} ({percentage_used}% used)",
+        "interval": 30,
+        "on-click": "thunar"
+    },
+
+    "tray": {
+        "icon-size": 16,
+        "spacing": 8
+    },
+
+    "hyprland/language": {
+        "format": " {short}"
     },
 
     "pulseaudio": {
-        // "scroll-step": 1, // %, can be a float
-        "format": "{volume}% {icon} {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
-        "format-bluetooth-muted": " {icon} {format_source}",
-        "format-muted": " {format_source}",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "scroll-step": 5,
+        "format": "{icon} {volume}%",
+        "format-muted": " Muted",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", "", ""]
+            "headset":   "",
+            "default":   ["", "", ""]
         },
+        "tooltip-format": "{desc}",
         "on-click": "pavucontrol"
     },
 
-    "power-profiles-daemon": {
-        "format": "{icon}",
-        "tooltip-format": "Power profile: {profile} Driver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
+    "network": {
+        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-disconnected": " Offline",
+        "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}",
+        "tooltip-format-disconnected": "No connection",
+        "interval": 3,
+        "on-click": "kitty -e nmtui"
     },
-    
+
     "custom/power": {
         "format": "⏻",
         "tooltip": "Power menu",
         "on-click": "~/.config/rofi/powermenu.sh"
-    },
-
-    "custom/menu": {
-        "format": "\uF345 ",
-        "tooltip": "disk"
     }
 }

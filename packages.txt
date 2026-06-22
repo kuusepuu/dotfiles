@@ -56,6 +56,10 @@ mise
 ghc
 cabal-install
 
+# Bluetooth
+bluez
+blueman
+
 # Notifications
 dunst
 
@@ -82,3 +86,8 @@ pavucontrol
 gimp
 lact
 dbeaver
+
+# Docker
+docker
+docker-compose
+docker-buildx

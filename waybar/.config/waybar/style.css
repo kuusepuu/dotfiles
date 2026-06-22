@@ -1,103 +1,170 @@
+@import "mocha.css";
 
 * {
-  font-family: "Noto Sans", "Font Awesome 6 Free";
-  font-size: 15px;
-  color: #f9e2af;
-  font-weight: bold;
+    font-family: "CaskaydiaCove Nerd Font", "Noto Sans", "Font Awesome 6 Free";
+    font-size: 14px;
+    font-weight: bold;
+    color: @text;
+    padding: 0;
+    margin: 0;
+    min-height: 0;
+    border: none;
+    border-radius: 0;
 }
 
 window#waybar {
-  background-color: rgba(00, 00, 00, 0);
-  margin-top: 5px;
+    background: transparent;
 }
 
-#power-profiles-daemon,
-#workspaces,
-#memory,
-#cpu,
-#custom-power,
+/* ── Shared pill base ────────────────────────────────────────────────────── */
+#hardware,
+#custom-gpu,
+#clock,
+#bluetooth,
+#disk,
+#tray,
 #language,
 #pulseaudio,
 #network,
+#custom-power {
+    background: rgba(30, 30, 46, 0.92);
+    padding: 4px 20px;
+    margin: 2px 4px;
+}
+
+/* ── LEFT pills: parallelogram lean-right (/shape) ───────────────────────── */
+#hardware,
+#custom-gpu {
+    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
+}
+
+/* ── CENTER clock: arch trapezoid (wider at bottom) ──────────────────────── */
 #clock {
-  padding: 5px 15px;
-  background-color: rgba(76, 79, 105, 0.9);
-  border-radius: 5px;
+    clip-path: polygon(14px 0%, calc(100% - 14px) 0%, 100% 100%, 0% 100%);
 }
 
-.modules-left * {
-  margin-left: 10px;
+/* ── RIGHT pills: parallelogram lean-left (\shape) ───────────────────────── */
+#bluetooth,
+#disk,
+#tray,
+#language,
+#pulseaudio,
+#network,
+#custom-power {
+    clip-path: polygon(0% 0%, calc(100% - 14px) 0%, 100% 100%, 14px 100%);
 }
 
-.modules-left #workspaces,
-.modules-left #workspaces * {
-  margin-left: 0 ;
-}
-
-.modules-left #workspaces {
-  margin-left: 10px;
-}
-
-.modules-right * {
-  margin-right: 10px;
-}
-
+/* ── Workspaces: rounded rect, no clip ───────────────────────────────────── */
 #workspaces {
-  padding: 0;
-  margin-left: 0;
-  border: 2px solid #cba6f7;
+    background: rgba(30, 30, 46, 0.92);
+    border-radius: 6px;
+    border: 2px solid @mauve;
+    padding: 0;
+    margin: 2px 4px;
 }
 
 #workspaces button {
-  padding: 0 5px;
-  margin-left: 0;
-  background: transparent;
-}
- #workspaces button label {
-   color: #cba6f7;
- }
-
-#workspaces button.active label {
-  color: rgb(166, 209, 137);
+    background: transparent;
+    color: @mauve;
+    padding: 2px 8px;
+    border-radius: 4px;
+    min-width: 0;
 }
 
-#power-profiles-daemon {
-  color: #94e2d5;
-  border: 2px solid #94e2d5;
+#workspaces button.active {
+    color: @green;
+    background: rgba(166, 227, 161, 0.12);
 }
 
-#memory {
-  color: #fab387;
-  border: 2px solid #fab387;
+#workspaces button.urgent {
+    color: @red;
+    background: rgba(243, 139, 168, 0.12);
 }
 
-#cpu {
-  color: #eba0ac;
-  border: 2px solid #eba0ac;
+#workspaces button:hover {
+    background: rgba(203, 166, 247, 0.12);
 }
 
-#language {
-  color: #f5e0dc;
-  border: 2px solid #f5e0dc;
+/* ── Group internals: transparent pass-through ───────────────────────────── */
+#memory,
+#cpu,
+#temperature {
+    background: transparent;
+    border: none;
+    clip-path: none;
+    padding: 0 6px;
+    margin: 0;
+    color: @peach;
 }
 
-#pulseaudio {
-  color: #74c7ec;
-  border: 2px solid #74c7ec;
+/* ── Per-module color accents (border + text) ────────────────────────────── */
+#hardware {
+    border: 2px solid @peach;
+    color: @peach;
 }
 
-#network {
-  color: #a6e3a1;
-  border: 2px solid #a6e3a1;
+#custom-gpu {
+    border: 2px solid @teal;
+    color: @teal;
 }
 
 #clock {
-  color: #b4befe;
-  border: 2px solid #b4befe;
+    border: 2px solid @lavender;
+    color: @lavender;
 }
 
+#bluetooth {
+    border: 2px solid @sky;
+    color: @sky;
+}
+
+#bluetooth.off {
+    border-color: @overlay1;
+    color: @overlay1;
+}
+
+#disk {
+    border: 2px solid @yellow;
+    color: @yellow;
+}
+
+#tray {
+    border: 2px solid @overlay0;
+    padding: 4px 14px;
+}
+
+#language {
+    border: 2px solid @rosewater;
+    color: @rosewater;
+}
+
+#pulseaudio {
+    border: 2px solid @sapphire;
+    color: @sapphire;
+}
+
+#pulseaudio.muted {
+    border-color: @overlay1;
+    color: @overlay1;
+}
+
+#network {
+    border: 2px solid @green;
+    color: @green;
+}
+
+#network.disconnected {
+    border-color: @red;
+    color: @red;
+}
 
 #custom-power {
-    color: #f38ba8;
-    border: 2px solid #f38ba8;
+    border: 2px solid @red;
+    color: @red;
+    padding: 4px 16px;
+}
+
+/* Temperature critical state */
+#temperature.critical {
+    color: @red;
 }
