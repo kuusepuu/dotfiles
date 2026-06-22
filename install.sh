@@ -8,11 +8,14 @@ grep -v '^\s*#' "$DOTFILES_DIR/packages.txt" | grep -v '^\s*$' \
     | sudo pacman -S --needed -
 
 echo "==> Stowing dotfiles..."
-STOW_PACKAGES=(backgrounds fastfetch gtk hyprland hyprpaper kitty mise rofi starship thunar waybar)
+STOW_PACKAGES=(backgrounds fastfetch fish gtk hyprland hyprpaper kitty mise rofi starship thunar waybar)
 for pkg in "${STOW_PACKAGES[@]}"; do
     echo "    stow: $pkg"
     stow -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg"
 done
+
+echo "==> Setting fish as default shell..."
+chsh -s /usr/bin/fish "$USER"
 
 echo "==> Installing greetd system files..."
 getent group greeter > /dev/null || { echo "ERROR: greeter group missing — install greetd first"; exit 1; }
@@ -32,5 +35,3 @@ mise install
 
 echo "==> Done."
 echo "    Reload Hyprland with: hyprctl reload"
-echo "    Activate mise in your shell by adding to ~/.bashrc:"
-echo '      eval "$(mise activate bash)"'

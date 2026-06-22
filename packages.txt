@@ -12,8 +12,8 @@ hyprpaper
 
 # Terminal & shell
 kitty
+fish
 starship
-bash-completion
 
 # App launcher & power menu
 rofi
