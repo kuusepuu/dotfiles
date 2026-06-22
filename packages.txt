@@ -56,6 +56,12 @@ mise
 ghc
 cabal-install
 
+# Notifications
+dunst
+
+# Session management
+uwsm
+
 # Misc Wayland utils
 dbus
 xdg-utils

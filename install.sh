@@ -5,13 +5,13 @@ DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 echo "==> Installing packages..."
 grep -v '^\s*#' "$DOTFILES_DIR/packages.txt" | grep -v '^\s*$' \
-    | sudo pacman -S --needed -
+    | sudo pacman -Syu --needed -
 
 echo "==> Stowing dotfiles..."
 STOW_PACKAGES=(backgrounds fastfetch fish gtk hyprland hyprpaper kitty mise rofi starship thunar waybar)
 for pkg in "${STOW_PACKAGES[@]}"; do
     echo "    stow: $pkg"
-    stow -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg"
+    stow --adopt -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg" && git -C "$DOTFILES_DIR" checkout -- "$pkg" 2>/dev/null || true
 done
 
 echo "==> Setting fish as default shell..."
