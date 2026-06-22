@@ -59,3 +59,7 @@ cabal-install
 # Misc Wayland utils
 dbus
 xdg-utils
+
+# Login manager
+greetd
+greetd-tuigreet

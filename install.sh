@@ -14,6 +14,19 @@ for pkg in "${STOW_PACKAGES[@]}"; do
     stow -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg"
 done
 
+echo "==> Installing greetd system files..."
+getent group greeter > /dev/null || { echo "ERROR: greeter group missing — install greetd first"; exit 1; }
+sudo mkdir -p /etc/greetd
+sudo cp "$DOTFILES_DIR/greetd/etc/greetd/config.toml" /etc/greetd/config.toml
+sudo cp "$DOTFILES_DIR/greetd/etc/greetd/tuigreet.sh"  /etc/greetd/tuigreet.sh
+sudo cp "$DOTFILES_DIR/greetd/etc/greetd/issue"        /etc/issue
+sudo chmod +x /etc/greetd/tuigreet.sh
+sudo chmod 750 /etc/greetd
+sudo chown -R root:greeter /etc/greetd
+
+echo "==> Enabling greetd..."
+sudo systemctl enable greetd.service
+
 echo "==> Installing mise tools..."
 mise install
 
