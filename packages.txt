@@ -86,6 +86,8 @@ pavucontrol
 gimp
 lact
 dbeaver
+nano
+opencode
 
 # Docker
 docker

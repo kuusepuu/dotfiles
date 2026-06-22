@@ -81,7 +81,7 @@ Select **Install**, wait for it to finish, then **reboot** and remove the USB.
 
 ### 6. Log in and clone the dotfiles
 
-Log in as `kuusepuu` on the TTY, then clone this repo:
+Log in as `xxxx` on the TTY, then clone this repo:
 
 ```bash
 git clone https://github.com/kuusepuu/dotfiles.git ~/dotfiles
