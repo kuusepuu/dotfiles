@@ -3,6 +3,12 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+if ! grep -q '^\[multilib\]' /etc/pacman.conf; then
+    echo "ERROR: [multilib] repo is not enabled in /etc/pacman.conf"
+    echo "       Uncomment [multilib] and its Include line, then re-run."
+    exit 1
+fi
+
 echo "==> Installing packages..."
 grep -v '^\s*#' "$DOTFILES_DIR/packages.txt" | grep -v '^\s*$' \
     | sudo pacman -Syu --needed -
@@ -13,6 +19,16 @@ for pkg in "${STOW_PACKAGES[@]}"; do
     echo "    stow: $pkg"
     stow --adopt -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg" && git -C "$DOTFILES_DIR" checkout -- "$pkg" 2>/dev/null || true
 done
+
+echo "==> Seeding Discord config..."
+if pacman -Qs discord &>/dev/null; then
+    mkdir -p "$HOME/.config/discord"
+    if [ ! -f "$HOME/.config/discord/settings.json" ]; then
+        printf '{\n  "SKIP_HOST_UPDATE": true,\n  "OPEN_ON_STARTUP": false\n}\n' \
+            > "$HOME/.config/discord/settings.json"
+        echo "    Wrote ~/.config/discord/settings.json"
+    fi
+fi
 
 echo "==> Setting fish as default shell..."
 chsh -s /usr/bin/fish "$USER"

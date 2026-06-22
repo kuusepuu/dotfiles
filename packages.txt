@@ -69,3 +69,16 @@ xdg-utils
 # Login manager
 greetd
 greetd-tuigreet
+
+# Applications
+firefox
+discord
+steam
+libreoffice-fresh
+vlc
+zed
+btop
+pavucontrol
+gimp
+lact
+dbeaver
