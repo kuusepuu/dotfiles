@@ -1,0 +1,59 @@
+# Core Wayland / Hyprland
+hyprland
+xdg-desktop-portal-hyprland
+xdg-desktop-portal-gtk
+polkit-gnome
+qt5-wayland
+qt6-wayland
+
+# Status bar & wallpaper
+waybar
+hyprpaper
+
+# Terminal & shell
+kitty
+starship
+bash-completion
+
+# App launcher & power menu
+rofi
+papirus-icon-theme
+swaylock
+
+# File manager
+thunar
+gvfs
+
+# Screenshots
+grim
+slurp
+wl-clipboard
+
+# Media / brightness / audio
+playerctl
+brightnessctl
+wireplumber
+pipewire
+pipewire-pulse
+
+# Fonts
+ttf-cascadia-code-nerd
+noto-fonts
+noto-fonts-emoji
+ttf-font-awesome
+
+# System info
+fastfetch
+
+# Dev tools
+git
+base-devel
+stow
+curl
+mise
+ghc
+cabal-install
+
+# Misc Wayland utils
+dbus
+xdg-utils

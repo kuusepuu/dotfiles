@@ -5,17 +5,15 @@
 }
 
 window {
-    transparency:   "real";
+    transparency:     "real";
     background-color: @bg-transparent;
-    location:       center;
-    anchor:         center;
-    width:          600px;
-    height:         480px;
-    x-offset:       0;
-    y-offset:       0;
-    border:         0px;
-    border-radius:  12px;
-    cursor:         "default";
+    location:         center;
+    anchor:           center;
+    width:            600px;
+    height:           480px;
+    border:           0px;
+    border-radius:    12px;
+    cursor:           "default";
 }
 
 mainbox {
@@ -33,28 +31,49 @@ inputbar {
     border:           1px;
     border-color:     @border;
     border-radius:    8px;
-    padding:          6px 12px;
+    padding:          8px 12px;
     spacing:          8px;
     children:         [icon-search, entry];
 }
 
 icon-search {
-    expand:     false;
-    str:        "";
-    font:       "CaskaydiaCove Nerd Font Mono 16";
-    text-color: @fg-dim;
-    vertical-align: 0.5;
+    expand:          false;
+    str:             "";
+    font:            "CaskaydiaCove Nerd Font Mono 16";
+    text-color:      @fg-dim;
+    vertical-align:  0.5;
 }
 
 entry {
-    font:             "CaskaydiaCove Nerd Font Mono 12";
-    text-color:       @fg;
-    placeholder:      "Type to search…";
+    font:              "CaskaydiaCove Nerd Font Mono 12";
+    text-color:        @fg;
+    placeholder:       "Type to search…";
     placeholder-color: @overlay0;
+    background-color:  transparent;
+    expand:            true;
+    padding:           2px 0;
+    cursor:            text;
+}
+
+prompt {
+    font:            "CaskaydiaCove Nerd Font Mono 12";
+    text-color:      @fg-dim;
+    padding:         2px 8px 2px 0;
     background-color: transparent;
-    expand:           true;
-    padding:          2px 0;
-    cursor:           text;
+}
+
+message {
+    background-color: @bg-alt;
+    border:           1px;
+    border-color:     @border;
+    border-radius:    6px;
+    padding:          8px 12px;
+}
+
+textbox {
+    font:            "CaskaydiaCove Nerd Font Mono 11";
+    text-color:      @fg;
+    background-color: transparent;
 }
 
 listview {
@@ -79,16 +98,22 @@ element {
     cursor:           default;
 }
 
-element selected {
-    background-color: @sel-bg;
-    text-color:       @sel-fg;
-}
+/* Explicit state matrix — prevents system-default (white) fallback */
+element normal normal    { background-color: transparent;              text-color: @fg; }
+element normal active    { background-color: rgba(137, 180, 250, 0.15); text-color: @blue; }
+element normal urgent    { background-color: rgba(243, 139, 168, 0.15); text-color: @red; }
+element alternate normal { background-color: transparent;              text-color: @fg; }
+element alternate active { background-color: rgba(137, 180, 250, 0.15); text-color: @blue; }
+element alternate urgent { background-color: rgba(243, 139, 168, 0.15); text-color: @red; }
+element selected normal  { background-color: @sel-bg;                  text-color: @sel-fg; }
+element selected active  { background-color: @blue;                    text-color: @bg-solid; }
+element selected urgent  { background-color: @red;                     text-color: @bg-solid; }
 
 element-icon {
-    size:           24px;
-    border-radius:  4px;
-    vertical-align: 0.5;
-    margin:         0 4px 0 0;
+    size:            24px;
+    border-radius:   4px;
+    vertical-align:  0.5;
+    margin:          0 4px 0 0;
 }
 
 element-text {
@@ -97,31 +122,9 @@ element-text {
     vertical-align:  0.5;
 }
 
-element selected element-text {
-    text-color: @sel-fg;
-}
-
-element-urgent {
-    background-color: @red;
-    text-color:       @bg-solid;
-    border-radius:    6px;
-}
-
-element-alternate {
-    background-color: rgba(49, 50, 68, 0.5);
-}
-
-element normal element-icon {
-    size: 24px;
-}
-
-element selected element-icon {
-    size: 24px;
-}
-
 error-message {
-    background-color: @red;
-    text-color:       @bg-solid;
+    background-color: rgba(243, 139, 168, 0.15);
+    text-color:       @red;
     padding:          8px;
     border-radius:    6px;
     font:             "CaskaydiaCove Nerd Font Mono 10";

@@ -1,0 +1,13 @@
+[tools]
+node     = "lts"
+go       = "latest"
+rust     = "latest"
+dotnet   = "10"
+python   = "latest"
+java     = "temurin-21"
+kotlin   = "latest"
+php      = "latest"
+haskell  = "latest"
+
+[env]
+DOTNET_CLI_TELEMETRY_OPTOUT = "1"

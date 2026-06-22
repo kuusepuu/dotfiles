@@ -75,9 +75,9 @@
     },
     
     "custom/power": {
-        "format" : "⏻",
-		"tooltip": "Power PC",
-		"on-click": "wlogout"
+        "format": "⏻",
+        "tooltip": "Power menu",
+        "on-click": "~/.config/rofi/powermenu.sh"
     },
 
     "custom/menu": {
