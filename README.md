@@ -118,3 +118,25 @@ greetd + tuigreet will appear on VT1. Select the **Hyprland** session and log in
 - **Keyboard layouts** — `us` and `et` (Estonian), toggled with Alt+Shift. Edit `~/.config/hypr/input.conf` to change.
 - **AMD microcode** — loaded automatically by GRUB. On Intel systems, install `intel-ucode` manually after step 7.
 - **mise runtimes** — `mise install` fetches node (LTS), go, rust, python, java (Temurin 21), kotlin, dotnet 10, php, and haskell. This takes a while on first run.
+
+---
+
+## Tips
+
+### SSH with named keys
+
+```bash
+ssh-keygen -t ed25519 -f ~/.ssh/id_ed25519_$(hostname) -C "$(hostname)"
+```
+
+### JetBrains Toolbox
+
+Download the tarball from [jetbrains.com/toolbox-app](https://www.jetbrains.com/toolbox-app/), then:
+
+```bash
+sudo mkdir -p /opt/jetbrains-toolbox
+sudo tar xzf jetbrains-toolbox-*.tar.gz -C /opt/jetbrains-toolbox --strip-components=1
+/opt/jetbrains-toolbox/jetbrains-toolbox
+```
+
+Toolbox creates its own `.desktop` entry and handles all IDE installations — rofi picks everything up automatically.
