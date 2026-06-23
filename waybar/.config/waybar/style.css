@@ -32,18 +32,10 @@ window#waybar {
     margin: 2px 4px;
 }
 
-/* ── LEFT pills: parallelogram lean-right (/shape) ───────────────────────── */
+/* ── Rounded corners for all pills ──────────────────────────────────────── */
 #hardware,
-#custom-gpu {
-    clip-path: polygon(14px 0%, 100% 0%, calc(100% - 14px) 100%, 0% 100%);
-}
-
-/* ── CENTER clock: arch trapezoid (wider at bottom) ──────────────────────── */
-#clock {
-    clip-path: polygon(14px 0%, calc(100% - 14px) 0%, 100% 100%, 0% 100%);
-}
-
-/* ── RIGHT pills: parallelogram lean-left (\shape) ───────────────────────── */
+#custom-gpu,
+#clock,
 #bluetooth,
 #disk,
 #tray,
@@ -51,7 +43,7 @@ window#waybar {
 #pulseaudio,
 #network,
 #custom-power {
-    clip-path: polygon(0% 0%, calc(100% - 14px) 0%, 100% 100%, 14px 100%);
+    border-radius: 8px;
 }
 
 /* ── Workspaces: rounded rect, no clip ───────────────────────────────────── */
@@ -91,7 +83,6 @@ window#waybar {
 #temperature {
     background: transparent;
     border: none;
-    clip-path: none;
     padding: 0 6px;
     margin: 0;
     color: @peach;
