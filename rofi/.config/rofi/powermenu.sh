@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-LOCK="   Lock"
-SUSPEND="   Suspend"
-LOGOUT="   Logout"
-REBOOT="   Reboot"
-SHUTDOWN="   Shutdown"
+LOCK="  Lock"
+SUSPEND="  Suspend"
+LOGOUT="  Logout"
+REBOOT="  Reboot"
+SHUTDOWN="  Shutdown"
 
 CHOICE=$(printf "%s\n" "$LOCK" "$SUSPEND" "$LOGOUT" "$REBOOT" "$SHUTDOWN" \
     | rofi -dmenu \

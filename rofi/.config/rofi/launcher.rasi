@@ -33,15 +33,14 @@ inputbar {
     border-radius:    8px;
     padding:          8px 12px;
     spacing:          8px;
-    children:         [icon-search, entry];
+    children:         [prompt, entry];
 }
 
-icon-search {
-    expand:          false;
-    str:             "";
-    font:            "CaskaydiaCove Nerd Font Mono 16";
-    text-color:      @fg-dim;
-    vertical-align:  0.5;
+prompt {
+    font:             "CaskaydiaCove Nerd Font Mono 12";
+    text-color:       @fg-dim;
+    background-color: transparent;
+    padding:          2px 8px 2px 0;
 }
 
 entry {
@@ -53,13 +52,6 @@ entry {
     expand:            true;
     padding:           2px 0;
     cursor:            text;
-}
-
-prompt {
-    font:            "CaskaydiaCove Nerd Font Mono 12";
-    text-color:      @fg-dim;
-    padding:         2px 8px 2px 0;
-    background-color: transparent;
 }
 
 message {
@@ -110,16 +102,18 @@ element selected active  { background-color: @blue;                    text-colo
 element selected urgent  { background-color: @red;                     text-color: @bg-solid; }
 
 element-icon {
-    size:            24px;
-    border-radius:   4px;
-    vertical-align:  0.5;
-    margin:          0 4px 0 0;
+    size:             24px;
+    border-radius:    4px;
+    vertical-align:   0.5;
+    margin:           0 4px 0 0;
+    background-color: transparent;
 }
 
 element-text {
-    font:            "CaskaydiaCove Nerd Font Mono 11";
-    text-color:      inherit;
-    vertical-align:  0.5;
+    font:             "CaskaydiaCove Nerd Font Mono 11";
+    text-color:       inherit;
+    background-color: transparent;
+    vertical-align:   0.5;
 }
 
 error-message {
