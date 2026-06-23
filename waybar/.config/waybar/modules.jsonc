@@ -6,7 +6,7 @@
     },
 
     "memory": {
-        "format": " {used:0.1f}G  {percentage}%",
+        "format": " {used:0.1f}G / {total:0.1f}G |",
         "tooltip-format": "{used:0.1f}G / {total:0.1f}G used",
         "interval": 3,
         "on-click": "kitty -e btop"
@@ -47,7 +47,7 @@
 
     // ── Clock (center) ────────────────────────────────────────────────────
     "clock": {
-        "format": " {:%H:%M   %a %d %b}",
+        "format": " {:%H:%M | %a %d %b}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "calendar": {
             "mode": "month",
@@ -73,24 +73,12 @@
         "on-click": "blueman-manager"
     },
 
-    "disk": {
-        "format": " {free}",
-        "tooltip-format": "{used} / {total} ({percentage_used}% used)",
-        "interval": 30,
-        "on-click": "thunar"
-    },
-
-    "tray": {
-        "icon-size": 16,
-        "spacing": 8
-    },
-
     "hyprland/language": {
         "format": " {short}"
     },
 
     "pulseaudio": {
-        "scroll-step": 5,
+        "scroll-step": 1,
         "format": "{icon} {volume}%",
         "format-muted": " Muted",
         "format-icons": {
@@ -103,7 +91,7 @@
     },
 
     "network": {
-        "format-ethernet": " {bandwidthDownBytes}  {bandwidthUpBytes}",
+        "format-ethernet": "󰁆 {bandwidthDownBytes}  󰁞 {bandwidthUpBytes}",
         "format-wifi": " {bandwidthDownBytes}  {bandwidthUpBytes}",
         "format-disconnected": " Offline",
         "tooltip-format-ethernet": "{ifname}: {ipaddr}/{cidr}",

@@ -1,7 +1,7 @@
 @import "mocha.css";
 
 * {
-    font-family: "CaskaydiaCove Nerd Font", "Noto Sans", "Font Awesome 6 Free";
+    font-family: "CaskaydiaCove Nerd Font", "Noto Sans", "Font Awesome 7 Free Solid", "Font Awesome 7 Free";
     font-size: 14px;
     font-weight: bold;
     color: @text;

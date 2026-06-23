@@ -11,5 +11,5 @@
 
     "modules-left":   ["group/hardware", "custom/gpu", "hyprland/workspaces"],
     "modules-center": ["clock"],
-    "modules-right":  ["bluetooth", "disk", "tray", "hyprland/language", "pulseaudio", "network", "custom/power"]
+    "modules-right":  ["bluetooth", "hyprland/language", "pulseaudio", "network", "custom/power"]
 }

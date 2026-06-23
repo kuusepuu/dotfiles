@@ -4,10 +4,9 @@ go       = "latest"
 rust     = "latest"
 dotnet   = "10"
 python   = "latest"
-java     = "temurin-21"
+java     = "25"
 kotlin   = "latest"
-php      = "latest"
-haskell  = "latest"
+usage = "latest"
 
 [env]
 DOTNET_CLI_TELEMETRY_OPTOUT = "1"
