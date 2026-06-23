@@ -2,7 +2,6 @@
 exec /usr/bin/tuigreet \
   --time \
   --time-format '%a %d %b  %H:%M' \
-  --issue \
   --remember \
   --remember-user-session \
   --user-menu \
