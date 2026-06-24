@@ -1,0 +1,39 @@
+<?xml version="1.1" encoding="UTF-8"?>
+
+<channel name="thunar" version="1.0">
+  <property name="default-view" type="string" value="ThunarIconView"/>
+  <property name="last-compact-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_50_PERCENT"/>
+  <property name="last-details-view-column-order" type="string" value="THUNAR_COLUMN_NAME,THUNAR_COLUMN_SIZE,THUNAR_COLUMN_TYPE,THUNAR_COLUMN_DATE_MODIFIED"/>
+  <property name="last-details-view-column-widths" type="string" value="50,50,112,106,81,348,50,50,131,50,50,78,50,453"/>
+  <property name="last-details-view-fixed-columns" type="bool" value="false"/>
+  <property name="last-details-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_38_PERCENT"/>
+  <property name="last-icon-view-zoom-level" type="string" value="THUNAR_ZOOM_LEVEL_100_PERCENT"/>
+  <property name="last-location-bar" type="string" value="ThunarLocationButtons"/>
+  <property name="last-separator-position" type="int" value="206"/>
+  <property name="last-show-hidden" type="bool" value="true"/>
+  <property name="last-side-pane" type="string" value="THUNAR_SIDEPANE_TYPE_SHORTCUTS"/>
+  <property name="last-sort-column" type="string" value="THUNAR_COLUMN_NAME"/>
+  <property name="last-sort-order" type="string" value="GTK_SORT_ASCENDING"/>
+  <property name="last-statusbar-visible" type="bool" value="true"/>
+  <property name="last-view" type="string" value="ThunarIconView"/>
+  <property name="misc-case-sensitive" type="bool" value="false"/>
+  <property name="misc-date-style" type="string" value="THUNAR_DATE_STYLE_SIMPLE"/>
+  <property name="misc-folders-first" type="bool" value="true"/>
+  <property name="misc-single-click" type="bool" value="false"/>
+  <property name="misc-text-beside-icons" type="bool" value="false"/>
+  <property name="last-window-maximized" type="bool" value="true"/>
+  <property name="last-image-preview-visible" type="bool" value="false"/>
+  <property name="last-menubar-visible" type="bool" value="true"/>
+  <property name="last-toolbar-items" type="string" value="menu:0,back:1,forward:1,open-parent:1,open-home:1,new-tab:0,new-window:0,toggle-split-view:0,undo:0,redo:0,zoom-out:0,zoom-in:0,zoom-reset:0,view-as-icons:0,view-as-detailed-list:0,view-as-compact-list:0,view-switcher:0,location-bar:1,reload:0,search:1,uca-action-1782214956702654-1:0"/>
+  <property name="hidden-devices" type="array">
+    <value type="string" value="6630C45B30C43439"/>
+    <value type="string" value="4270E8BB70E8B737"/>
+  </property>
+  <property name="misc-expandable-folders" type="bool" value="false"/>
+  <property name="misc-parallel-copy-mode" type="string" value="THUNAR_PARALLEL_COPY_MODE_NEVER"/>
+  <property name="hidden-bookmarks" type="array">
+    <value type="string" value="computer:///"/>
+    <value type="string" value="file:///home/kuusepuu/Desktop"/>
+    <value type="string" value="recent:///"/>
+  </property>
+</channel>
