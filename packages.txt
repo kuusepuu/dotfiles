@@ -45,7 +45,7 @@ noto-fonts-emoji
 ttf-font-awesome
 noto-fonts-cjk
 noto-fonts-extra
- ttf-nerd-fonts-symbols-common
+ttf-nerd-fonts-symbols-common
 
 # System info
 fastfetch
