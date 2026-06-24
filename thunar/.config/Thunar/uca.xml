@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+<action>
+	<icon>document-new</icon>
+	<name>Create New File</name>
+	<submenu></submenu>
+	<unique-id>1782214956702654-2</unique-id>
+	<command>bash -c 'name=$(rofi -dmenu -p "File name:" -theme /home/kuusepuu/.config/rofi/launcher.rasi) &amp;&amp; [ -n "$name" ] &amp;&amp; touch "%f/$name"'</command>
+	<description>Create a new empty file in the current directory</description>
+	<range></range>
+	<patterns>*</patterns>
+	<startup-notify/>
+	<directories/>
+</action>
+</actions>
