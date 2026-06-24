@@ -56,8 +56,6 @@ base-devel
 stow
 curl
 mise
-ghc
-cabal-install
 
 # Bluetooth
 bluez
