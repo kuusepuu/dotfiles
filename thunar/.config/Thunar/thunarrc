@@ -1,6 +1,6 @@
 [Configuration]
-DefaultView=ThunarDetailsView
-LastView=ThunarDetailsView
+DefaultView=ThunarIconView
+LastView=ThunarIconView
 LastLocationBar=ThunarLocationButtons
 LastSidePane=ThunarShortcutsPane
 LastSeparatorPosition=200
@@ -15,7 +15,7 @@ LastIconViewZoomLevel=THUNAR_ZOOM_LEVEL_100_PERCENT
 
 LastSortColumn=THUNAR_COLUMN_NAME
 LastSortOrder=GTK_SORT_ASCENDING
-LastShowHidden=FALSE
+LastShowHidden=TRUE
 
 MiscFoldersFirst=TRUE
 MiscCaseSensitive=FALSE
