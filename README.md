@@ -69,7 +69,7 @@ Use the following settings:
 | Profile | **Minimal** (no desktop — install.sh handles everything)                          |
 | Audio | pipewire                                                                          |
 | Kernels | linux                                                                             |
-| Additional packages | `git`                                                                             |
+| Additional packages | `git`, `nano`         |
 | Network | NetworkManager                                                                    |
 | Swap | zram                                                                              |
 | Bootloader | GRUB                                                                              |
