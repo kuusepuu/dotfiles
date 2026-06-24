@@ -1,0 +1,37 @@
+/* Catppuccin Mocha — libadwaita color overrides */
+:root {
+    --accent-bg-color: #cba6f7;
+    --accent-fg-color: #1e1e2e;
+    --accent-color: #cba6f7;
+
+    --window-bg-color: #1e1e2e;
+    --window-fg-color: #cdd6f4;
+
+    --view-bg-color: #1e1e2e;
+    --view-fg-color: #cdd6f4;
+
+    --headerbar-bg-color: #181825;
+    --headerbar-fg-color: #cdd6f4;
+    --headerbar-border-color: #313244;
+
+    --sidebar-bg-color: #181825;
+    --sidebar-fg-color: #cdd6f4;
+
+    --card-bg-color: #313244;
+    --card-fg-color: #cdd6f4;
+
+    --dialog-bg-color: #313244;
+    --dialog-fg-color: #cdd6f4;
+
+    --popover-bg-color: #313244;
+    --popover-fg-color: #cdd6f4;
+
+    --destructive-bg-color: #f38ba8;
+    --destructive-fg-color: #1e1e2e;
+    --success-bg-color: #a6e3a1;
+    --success-fg-color: #1e1e2e;
+    --warning-bg-color: #f9e2af;
+    --warning-fg-color: #1e1e2e;
+    --error-bg-color: #f38ba8;
+    --error-fg-color: #1e1e2e;
+}

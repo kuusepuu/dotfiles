@@ -26,6 +26,9 @@ gvfs
 tumbler
 ffmpegthumbnailer
 
+# Theming
+adw-gtk-theme
+
 # Screenshots
 grim
 slurp

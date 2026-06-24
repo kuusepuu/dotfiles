@@ -20,6 +20,10 @@ for pkg in "${STOW_PACKAGES[@]}"; do
     stow --adopt -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg" && git -C "$DOTFILES_DIR" checkout -- "$pkg" 2>/dev/null || true
 done
 
+echo "==> Applying GTK theme..."
+gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+
 echo "==> Seeding Discord config..."
 if pacman -Qs discord &>/dev/null; then
     mkdir -p "$HOME/.config/discord"
