@@ -136,7 +136,7 @@ Download the tarball from [jetbrains.com/toolbox-app](https://www.jetbrains.com/
 ```bash
 sudo mkdir -p /opt/jetbrains-toolbox
 sudo tar xzf jetbrains-toolbox-*.tar.gz -C /opt/jetbrains-toolbox --strip-components=1
-/opt/jetbrains-toolbox/jetbrains-toolbox
+/opt/jetbrains-toolbox/bin/jetbrains-toolbox
 ```
 
 Toolbox creates its own `.desktop` entry and handles all IDE installations — rofi picks everything up automatically.

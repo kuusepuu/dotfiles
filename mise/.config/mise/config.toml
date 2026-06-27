@@ -2,7 +2,7 @@
 node     = "lts"
 go       = "latest"
 rust     = "latest"
-dotnet   = "10"
+dotnet   = "latest"
 python   = "latest"
 java     = "25"
 kotlin   = "latest"
