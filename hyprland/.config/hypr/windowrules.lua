@@ -1,7 +1,7 @@
 hl.window_rule({
     name    = "thunar-opacity",
     match   = { class = "^[Tt]hunar$" },
-    opacity = { active = 0.92, inactive = 0.88 },
+    opacity = "0.92 0.88",
 })
 
 hl.window_rule({
