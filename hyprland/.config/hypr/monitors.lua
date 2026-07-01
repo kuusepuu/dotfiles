@@ -1,0 +1,16 @@
+hl.monitor({ output = "DP-1", mode = "2560x1440@171", position = { x = 0,    y = 0 }, scale = 1 })
+hl.monitor({ output = "DP-2", mode = "1920x1080@144", position = { x = 2560, y = 0 }, scale = 1 })
+hl.monitor({ output = "",     mode = "preferred",     position = "auto",               scale = 1 })
+
+-- Odd workspaces → DP-1 (main), even → DP-2 (secondary)
+-- When DP-2 is absent Hyprland ignores monitor bindings and all workspaces land on DP-1
+hl.workspace_rule({ workspace = "1",  monitor = "DP-1", default = true })
+hl.workspace_rule({ workspace = "3",  monitor = "DP-1" })
+hl.workspace_rule({ workspace = "5",  monitor = "DP-1" })
+hl.workspace_rule({ workspace = "7",  monitor = "DP-1" })
+hl.workspace_rule({ workspace = "9",  monitor = "DP-1" })
+hl.workspace_rule({ workspace = "2",  monitor = "DP-2", default = true })
+hl.workspace_rule({ workspace = "4",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "6",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "8",  monitor = "DP-2" })
+hl.workspace_rule({ workspace = "10", monitor = "DP-2" })

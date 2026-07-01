@@ -14,11 +14,14 @@ grep -v '^\s*#' "$DOTFILES_DIR/packages.txt" | grep -v '^\s*$' \
     | sudo pacman -Syu --needed -
 
 echo "==> Stowing dotfiles..."
-STOW_PACKAGES=(backgrounds dunst fastfetch fish gtk hyprland hyprpaper kitty mise rofi starship thunar waybar infra opencode uwsm)
+STOW_PACKAGES=(backgrounds dunst environment-d fastfetch fish gtk hyprland hyprland-session hyprpaper kitty mise rofi starship thunar waybar infra opencode)
 for pkg in "${STOW_PACKAGES[@]}"; do
     echo "    stow: $pkg"
     stow --adopt -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg" && git -C "$DOTFILES_DIR" checkout -- "$pkg" 2>/dev/null || true
 done
+
+echo "==> Reloading systemd user units..."
+systemctl --user daemon-reload
 
 echo "==> Applying GTK theme..."
 gsettings set org.gnome.desktop.interface gtk-theme 'adw-gtk3-dark'

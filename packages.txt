@@ -68,7 +68,6 @@ blueman
 dunst
 
 # Session management
-uwsm
 
 # Misc Wayland utils
 dbus
