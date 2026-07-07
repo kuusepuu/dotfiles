@@ -96,3 +96,6 @@ opencode
 docker
 docker-compose
 docker-buildx
+
+# Printer
+hplip

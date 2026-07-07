@@ -14,7 +14,6 @@ require("windowrules")
 hl.env("XCURSOR_SIZE",          "24")
 hl.env("HYPRCURSOR_SIZE",       "24")
 hl.env("QT_QPA_PLATFORMTHEME",  "qt5ct")
--- XDG session vars omitted: Hyprland's native USES_SYSTEMD sets them automatically
 
 hl.on("hyprland.start", function()
     hl.exec_cmd("systemctl --user start hyprland-session.target")
