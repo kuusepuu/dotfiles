@@ -1,1 +1,4 @@
 .idea
+fish/.config/fish/fish_variables
+thunar/.config/Thunar/accels.scm
+infra/infra/.env

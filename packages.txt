@@ -19,6 +19,7 @@ starship
 rofi
 papirus-icon-theme
 hyprlock
+hypridle
 
 # File manager
 thunar
@@ -64,6 +65,9 @@ mise
 bluez
 blueman
 
+# VPN
+openfortivpn
+
 # Notifications
 dunst
 
@@ -72,6 +76,7 @@ dunst
 # Misc Wayland utils
 dbus
 xdg-utils
+oo7
 
 # Login manager
 greetd
@@ -99,3 +104,4 @@ docker-buildx
 
 # Printer
 hplip
+cups

@@ -7,14 +7,12 @@ services:
     command: postgres -c 'max_connections=1000'
     restart: unless-stopped
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Copy env.example to .env and set POSTGRES_PASSWORD}
     volumes:
       - postgres-dev-data:/var/lib/postgresql
     ports:
-      - "5432:5432"
-
-
+      - "127.0.0.1:5432:5432"
 
 volumes:
-    postgres-dev-data:
+  postgres-dev-data:

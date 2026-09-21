@@ -1,6 +1,6 @@
 # dotfiles
 
-Hyprland + Wayland desktop configuration for Arch Linux. Includes Waybar, Kitty, Fish + Starship, rofi, tuigreet (greetd), Hyprpaper, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, PHP, Haskell) are managed by mise.
+Hyprland + Wayland desktop configuration for Arch Linux. Includes Waybar, Kitty, Fish + Starship, rofi, tuigreet (greetd), Hyprpaper, Hyprlock + Hypridle, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, and usage) are managed by mise.
 
 ---
 
@@ -100,6 +100,7 @@ This will:
 - Stow all config directories into `~` with GNU Stow
 - Set fish as the default shell
 - Copy greetd system files to `/etc/greetd/` and enable `greetd.service`
+- Enable Docker, Bluetooth, LACT, and CUPS
 - Run `mise install` to download all language runtimes
 
 ### 8. Reboot
@@ -114,14 +115,30 @@ greetd + tuigreet will appear on VT1. Select the **Hyprland** session and log in
 
 ## Notes
 
-- **Monitors** — the config targets `DP-1` at 2560×1440@165 Hz and `DP-2` at 1920×1080@144 Hz. Edit `~/.config/hypr/monitors.conf` to match your setup.
-- **Keyboard layouts** — `us` and `et` (Estonian), toggled with Alt+Shift. Edit `~/.config/hypr/input.conf` to change.
+- **Monitors** — the config targets `DP-1` at 2560×1440@171 Hz and `DP-2` at 1920×1080@144 Hz. Edit `~/.config/hypr/monitors.lua` to match your setup.
+- **Keyboard layouts** — `us` and `ee` (Estonian), toggled with Alt+Shift. Edit `~/.config/hypr/input.lua` to change.
+- **Idle and lock** — Hypridle locks the session after 10 minutes and powers displays off after 15 minutes. Activity powers the displays back on; idle time never suspends the machine.
 - **AMD microcode** — loaded automatically by GRUB. On Intel systems, install `intel-ucode` manually after step 7.
-- **mise runtimes** — `mise install` fetches node (LTS), go, rust, python, java (Temurin 21), kotlin, dotnet 10, php, and haskell. This takes a while on first run.
+- **mise runtimes** — `mise install` fetches Node.js (LTS), Go, Rust, Python, Java 25, Kotlin, .NET, and usage. This takes a while on first run; see [`mise/README.md`](mise/README.md) for common commands.
 
 ---
 
 ## Tips
+
+### Local Postgres
+
+The development Postgres container only listens on localhost and requires a
+password from an untracked `.env` file:
+
+```bash
+cd ~/infra
+cp env.example .env
+zeditor --wait .env
+docker compose up -d
+```
+
+Replace `change-me` before starting the container. Compose will fail with a
+clear error if `POSTGRES_PASSWORD` is missing.
 
 ### SSH with named keys
 

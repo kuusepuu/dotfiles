@@ -53,6 +53,9 @@ sudo chown -R root:greeter /etc/greetd
 echo "==> Enabling greetd..."
 sudo systemctl enable greetd.service
 
+echo "==> Enabling system services..."
+sudo systemctl enable --now bluetooth.service lactd.service cups.service
+
 echo "==> Setting up Docker..."
 sudo systemctl enable --now docker.service
 sudo usermod -aG docker "$USER"

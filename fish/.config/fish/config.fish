@@ -7,3 +7,7 @@ end
 set fish_greeting
 export PATH="$HOME/.dotnet/tools:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
+set -gx EDITOR "zeditor --wait"
+set -gx VISUAL "$EDITOR"
+
+alias taltech='sudo openfortivpn vpn.taltech.ee:443 --saml-login'
