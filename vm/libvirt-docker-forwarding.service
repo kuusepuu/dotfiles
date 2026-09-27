@@ -1,0 +1,15 @@
+[Unit]
+Description=Allow libvirt VM forwarding through Docker
+Requires=docker.service
+After=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=/usr/local/libexec/libvirt-docker-forwarding
+Restart=on-failure
+RestartSec=2s
+
+[Install]
+WantedBy=docker.service

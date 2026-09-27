@@ -56,26 +56,24 @@ archinstall
 
 Use the following settings:
 
-| Option | Value                                                                             |
+| Option | Value|
 |---|-----------------------------------------------------------------------------------|
-| Archinstall language | English                                                                           |
-| Mirrors | Pick your region                                                                  |
-| Locale | `en_US.UTF-8`                                                                     |
-| Keyboard layout | `us`                                                                              |
-| Timezone | `Europe/Tallinn`                                                                  |
-| Hostname | `archlinux`                                                                       |
-| Root password | set one                                                                           |
-| User account | username `xxxx`, add to `wheel` group, enable sudo                                |
-| Profile | **Minimal** (no desktop — install.sh handles everything)                          |
-| Audio | pipewire                                                                          |
-| Kernels | linux                                                                             |
-| Additional packages | `git`, `nano`         |
-| Network | NetworkManager                                                                    |
-| Swap | zram                                                                              |
-| Bootloader | Limine                                                                              |
+| Archinstall language | English |
+| Locales | `en_US.UTF-8`, `us` |
+| Mirrors and repositories | Pick your region |
 | Disk configuration | Best-effort default layout → select your drive → ext4, no separate home partition |
-| Encryption | none                                                                              |
-| Multilib | enable                                                                            |
+| Swap | zram: `enabled`, zstd |
+| Bootloader | Bootloader: Limine, UKI: up to you, Removable: enabled |
+| Kernels | linux |
+| Hostname | `archlinux` |
+| Authentication | Root password: setp one, User account: add name/password, add to sudo |
+| Profile | **Minimal** (no desktop — install.sh handles everything) |
+| Applications | Audio: pipewire, firewall: leave empty, others whatever |
+| Network | Network Manager (default backend) |
+| Pacman | Color: True |
+| Additional packages | `git`, `nano` |
+| Timezone | xxxx |
+
 
 Select **Install**, wait for it to finish, then **reboot** and remove the USB.
 
@@ -112,7 +110,7 @@ cd ~/dotfiles
 bash setup-vm.sh
 ```
 
-The VM setup checks hardware virtualization, installs QEMU, libvirt, virt-manager, dnsmasq, and UEFI firmware, then enables libvirt and the default VM network. Log out and back in afterward so your `libvirt` group membership takes effect. In virt-manager, use the **QEMU/KVM system** connection.
+The VM setup checks hardware virtualization, installs QEMU, libvirt, virt-manager, dnsmasq, and UEFI firmware, then enables libvirt and the default VM network. It also installs a systemd service that allows the default IPv4 VM network through Docker's `DOCKER-USER` chain whenever Docker starts. The service adds rules only when they are missing, and setup does not restart Docker or its containers. Log out and back in afterward so your `libvirt` group membership takes effect. In virt-manager, use the **QEMU/KVM system** connection.
 
 ### 8. Reboot
 

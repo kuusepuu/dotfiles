@@ -11,6 +11,8 @@ if [ "$EUID" -eq 0 ]; then
     exit 1
 fi
 
+DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
 echo "==> Checking hardware virtualization..."
 cpu_info="$(LC_ALL=C lscpu)"
 if grep -Eq '^Virtualization:[[:space:]]*AMD-V' <<< "$cpu_info"; then
@@ -70,4 +72,12 @@ if ! grep -Fxq default <<< "$autostart_networks"; then
 fi
 
 "${virsh_system[@]}" net-info default
+
+echo "==> Allowing VM network forwarding through Docker..."
+sudo install -Dm755 "$DOTFILES_DIR/vm/libvirt-docker-forwarding" /usr/local/libexec/libvirt-docker-forwarding
+sudo install -Dm644 "$DOTFILES_DIR/vm/libvirt-docker-forwarding.service" /etc/systemd/system/libvirt-docker-forwarding.service
+sudo systemctl daemon-reload
+sudo systemctl enable libvirt-docker-forwarding.service
+sudo systemctl restart libvirt-docker-forwarding.service
+
 echo "==> VM setup complete. Log out and back in before opening virt-manager."

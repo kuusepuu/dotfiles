@@ -1,0 +1,13 @@
+#!/bin/sh
+set -eu
+
+iptables=/usr/bin/iptables
+
+ensure_rule() {
+    if ! "$iptables" -w 10 -C DOCKER-USER "$@"; then
+        "$iptables" -w 10 -I DOCKER-USER 1 "$@"
+    fi
+}
+
+ensure_rule -i virbr0 -s 192.168.122.0/24 -j ACCEPT
+ensure_rule -o virbr0 -d 192.168.122.0/24 -m conntrack --ctstate ESTABLISHED,RELATED -j ACCEPT
