@@ -3,6 +3,21 @@ set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+VM_REQUESTED=false
+case "${1:-}" in
+    "")
+        [ "$#" -eq 0 ] || { echo "Usage: bash install.sh [--vm]" >&2; exit 2; }
+        ;;
+    --vm)
+        [ "$#" -eq 1 ] || { echo "Usage: bash install.sh [--vm]" >&2; exit 2; }
+        VM_REQUESTED=true
+        ;;
+    *)
+        echo "Usage: bash install.sh [--vm]" >&2
+        exit 2
+        ;;
+esac
+
 if ! grep -q '^\[multilib\]' /etc/pacman.conf; then
     echo "ERROR: [multilib] repo is not enabled in /etc/pacman.conf"
     echo "       Uncomment [multilib] and its Include line, then re-run."
@@ -63,6 +78,10 @@ echo "    Added $USER to docker group (re-login to apply)"
 
 echo "==> Installing mise tools..."
 mise install
+
+if [ "$VM_REQUESTED" = true ]; then
+    bash "$DOTFILES_DIR/setup-vm.sh"
+fi
 
 echo "==> Done."
 echo "    Reload Hyprland with: hyprctl reload"

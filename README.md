@@ -72,7 +72,7 @@ Use the following settings:
 | Additional packages | `git`, `nano`         |
 | Network | NetworkManager                                                                    |
 | Swap | zram                                                                              |
-| Bootloader | GRUB                                                                              |
+| Bootloader | Limine                                                                              |
 | Disk configuration | Best-effort default layout → select your drive → ext4, no separate home partition |
 | Encryption | none                                                                              |
 | Multilib | enable                                                                            |
@@ -94,6 +94,8 @@ cd ~/dotfiles
 bash install.sh
 ```
 
+To set up QEMU/KVM and virt-manager during installation, use `bash install.sh --vm` instead. VM setup runs after the normal install. If KVM is unavailable, the normal install will finish and the VM step will report how to enable it.
+
 This will:
 
 - Install all packages listed in `packages.txt` via pacman
@@ -102,6 +104,15 @@ This will:
 - Copy greetd system files to `/etc/greetd/` and enable `greetd.service`
 - Enable Docker, Bluetooth, LACT, and CUPS
 - Run `mise install` to download all language runtimes
+
+You can also add VM support later without rerunning the full installer:
+
+```bash
+cd ~/dotfiles
+bash setup-vm.sh
+```
+
+The VM setup checks hardware virtualization, installs QEMU, libvirt, virt-manager, dnsmasq, and UEFI firmware, then enables libvirt and the default VM network. Log out and back in afterward so your `libvirt` group membership takes effect. In virt-manager, use the **QEMU/KVM system** connection.
 
 ### 8. Reboot
 
