@@ -4,8 +4,6 @@ exec /usr/bin/tuigreet \
   --time-format '%a %d %b  %H:%M' \
   --remember \
   --remember-user-session \
-  --user-menu \
-  --user-menu-min-uid 1000 \
   --asterisks \
   --asterisks-char '•' \
   --width 72 \

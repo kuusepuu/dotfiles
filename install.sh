@@ -64,6 +64,11 @@ sudo cp "$DOTFILES_DIR/greetd/etc/greetd/issue"        /etc/issue
 sudo chmod +x /etc/greetd/tuigreet.sh
 sudo chmod 750 /etc/greetd
 sudo chown -R root:greeter /etc/greetd
+sudo install -Dm644 "$DOTFILES_DIR/greetd/etc/systemd/system/greetd.service.d/override.conf" \
+    /etc/systemd/system/greetd.service.d/override.conf
+sudo systemctl daemon-reload
+
+bash "$DOTFILES_DIR/setup-oo7.sh"
 
 echo "==> Enabling greetd..."
 sudo systemctl enable greetd.service

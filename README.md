@@ -100,6 +100,7 @@ This will:
 - Stow all config directories into `~` with GNU Stow
 - Set fish as the default shell
 - Copy greetd system files to `/etc/greetd/` and enable `greetd.service`
+- Enable oo7's user service and install greetd PAM integration for keyring unlocking
 - Enable Docker, Bluetooth, LACT, and CUPS
 - Run `mise install` to download all language runtimes
 
@@ -119,6 +120,43 @@ reboot
 ```
 
 greetd + tuigreet will appear on VT1. Select the **Hyprland** session and log in.
+
+The installer adds a greetd service override to delay the greeter until queued
+boot jobs have been dispatched and send service output to the journal. This
+reduces boot messages appearing over the login screen. Late kernel or systemd
+console messages may still appear; `Type=idle` waits at most five seconds.
+
+To apply the override to an existing installation:
+
+```bash
+sudo install -Dm644 greetd/etc/systemd/system/greetd.service.d/override.conf \
+    /etc/systemd/system/greetd.service.d/override.conf
+sudo systemctl daemon-reload
+```
+
+The override takes effect on the next boot. To investigate an error shown before
+entering a password, temporarily add `--debug=/var/cache/tuigreet/debug.log` to
+`/etc/greetd/tuigreet.sh`, reboot, then inspect that file and
+`sudo journalctl -b -u greetd --no-pager`. Remove the debug option afterward.
+
+The greeter remembers the last user without enabling `--user-menu`, avoiding
+tuigreet's duplicate authentication request at startup.
+
+oo7 starts through `oo7-daemon.service`. The greetd PAM configuration captures
+and sends the login password without `auto_start`, so PAM does not start a second
+daemon. The login keyring password must match your account password.
+The installer replaces `/etc/pam.d/greetd` with the repository version and saves
+the previous configuration as `/etc/pam.d/greetd.before-oo7` on the first run.
+
+To apply only the oo7 setup to an existing installation, run as your desktop user:
+
+```bash
+bash setup-oo7.sh
+```
+
+Reboot afterward to verify automatic unlocking on a fresh login. The
+`/usr/bin/oo7-daemon` workaround symlink is unnecessary when PAM does not start
+the daemon.
 
 ---
 

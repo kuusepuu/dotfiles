@@ -2,3 +2,4 @@
 fish/.config/fish/fish_variables
 thunar/.config/Thunar/accels.scm
 infra/infra/.env
+hyprland-session/.config/systemd/user/default.target.wants/oo7-daemon.service
