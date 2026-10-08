@@ -6,8 +6,5 @@ auth       include      system-local-login
 auth       optional     pam_oo7.so
 account    include      system-local-login
 session    include      system-local-login
-# oo7-daemon is started and owned by the systemd user service. `auto_start`
-# only enables pam_oo7's retry window so PAM waits for the daemon socket to
-# appear. Its /usr/bin/oo7-daemon fallback exec fails harmlessly on Arch (the
-# daemon lives in /usr/lib), so no second daemon is ever launched.
+#`auto_start`only enables pam_oo7's retry window so PAM waits for the daemon socket to appear.
 session    optional     pam_oo7.so auto_start

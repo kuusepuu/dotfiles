@@ -147,8 +147,7 @@ and sends the login password with `auto_start`, which enables pam_oo7's retry
 window so PAM waits for the daemon socket that the systemd user service is still
 creating at session open. The `/usr/bin/oo7-daemon` fallback exec built into
 `auto_start` fails harmlessly on Arch (the daemon is installed in `/usr/lib`), so
-PAM never starts a second daemon. The login keyring password must match your
-account password.
+PAM never starts a second daemon.
 The installer replaces `/etc/pam.d/greetd` with the repository version and saves
 the previous configuration as `/etc/pam.d/greetd.before-oo7` on the first run.
 
