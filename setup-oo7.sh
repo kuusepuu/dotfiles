@@ -19,4 +19,5 @@ if ! sudo test -e /etc/pam.d/greetd.before-oo7; then
 fi
 sudo install -m644 "$DOTFILES_DIR/greetd/etc/pam.d/greetd" /etc/pam.d/greetd
 
-echo "    oo7 startup is managed by systemd; PAM only sends the login password."
+echo "    oo7 startup is managed by systemd; PAM waits (auto_start) for the"
+echo "    systemd-owned daemon socket and only sends the login password."

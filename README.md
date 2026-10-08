@@ -143,8 +143,12 @@ The greeter remembers the last user without enabling `--user-menu`, avoiding
 tuigreet's duplicate authentication request at startup.
 
 oo7 starts through `oo7-daemon.service`. The greetd PAM configuration captures
-and sends the login password without `auto_start`, so PAM does not start a second
-daemon. The login keyring password must match your account password.
+and sends the login password with `auto_start`, which enables pam_oo7's retry
+window so PAM waits for the daemon socket that the systemd user service is still
+creating at session open. The `/usr/bin/oo7-daemon` fallback exec built into
+`auto_start` fails harmlessly on Arch (the daemon is installed in `/usr/lib`), so
+PAM never starts a second daemon. The login keyring password must match your
+account password.
 The installer replaces `/etc/pam.d/greetd` with the repository version and saves
 the previous configuration as `/etc/pam.d/greetd.before-oo7` on the first run.
 
@@ -155,8 +159,10 @@ bash setup-oo7.sh
 ```
 
 Reboot afterward to verify automatic unlocking on a fresh login. The
-`/usr/bin/oo7-daemon` workaround symlink is unnecessary when PAM does not start
-the daemon.
+`/usr/bin/oo7-daemon` workaround symlink is unnecessary: with it absent the
+`auto_start` fallback exec cannot launch a second daemon, and because
+`oo7-daemon.service` is enabled the retry window is enough for the
+systemd-owned daemon to create the socket.
 
 ---
 
