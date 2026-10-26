@@ -42,6 +42,17 @@ Singleton {
     readonly property string speaker: g(0xF04C3)
     readonly property string brightness: g(0xF00DF)
     readonly property string batteryCharging: g(0xF0084)
+    readonly property string search: g(0xF0349)
+    readonly property string pin: g(0xF0403)
+    readonly property string chevronRight: g(0xF0142)
+    readonly property string apps: g(0xF003B)
+    readonly property string code: g(0xF0174)
+    readonly property string web: g(0xF059F)
+    readonly property string media: g(0xF040A)
+    readonly property string gamepad: g(0xF0297)
+    readonly property string palette: g(0xF03D8)
+    readonly property string office: g(0xF00D6)
+    readonly property string cog: g(0xF0493)
 
     function battery(pct) {
         if (pct >= 95) return g(0xF0079);

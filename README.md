@@ -1,6 +1,6 @@
 # dotfiles
 
-Hyprland + Wayland desktop configuration for Arch Linux. Includes Quickshell (bar, notifications, OSD, power menu), Kitty, Fish + Starship, rofi, tuigreet (greetd), Hyprpaper, Hyprlock + Hypridle, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, and usage) are managed by mise.
+Hyprland + Wayland desktop configuration for Arch Linux. Includes Quickshell (bar, launcher, notifications, OSD, power menu), Kitty, Fish + Starship, tuigreet (greetd), Hyprpaper, Hyprlock + Hypridle, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, and usage) are managed by mise.
 
 ---
 
@@ -208,4 +208,4 @@ sudo tar xzf jetbrains-toolbox-*.tar.gz -C /opt/jetbrains-toolbox --strip-compon
 /opt/jetbrains-toolbox/bin/jetbrains-toolbox
 ```
 
-Toolbox creates its own `.desktop` entry and handles all IDE installations — rofi picks everything up automatically.
+Toolbox creates its own `.desktop` entry and handles all IDE installations — the launcher picks everything up automatically.

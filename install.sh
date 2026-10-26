@@ -29,7 +29,7 @@ grep -v '^\s*#' "$DOTFILES_DIR/packages.txt" | grep -v '^\s*$' \
     | sudo pacman -Syu --needed -
 
 echo "==> Stowing dotfiles..."
-STOW_PACKAGES=(backgrounds environment-d fastfetch fish gtk hyprland hyprland-session hyprpaper kitty mise quickshell rofi starship thunar xdg infra opencode)
+STOW_PACKAGES=(backgrounds environment-d fastfetch fish gtk hyprland hyprland-session hyprpaper kitty mise quickshell starship thunar xdg infra opencode)
 for pkg in "${STOW_PACKAGES[@]}"; do
     echo "    stow: $pkg"
     stow --adopt -v -t "$HOME" -d "$DOTFILES_DIR" "$pkg" && git -C "$DOTFILES_DIR" checkout -- "$pkg" 2>/dev/null || true

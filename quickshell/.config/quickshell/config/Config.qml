@@ -29,7 +29,22 @@ Singleton {
     property int notifTimeoutNormal: 8000
     property int notifTimeoutCritical: 0    // 0 = until dismissed
 
+    // ── Launcher ──────────────────────────────────────────────────────────
+    property int launcherHalfLifeDays: 7    // how fast usage counts fade from the ranking
+    // Category tabs. An app goes to the first tab whose `cats` share a freedesktop Categories= value with it,
+    // so the order is also the match priority (Steam is Network;Game → Games, not Web).
+    property var launcherCategories: [
+        { name: "Games", icon: Icons.gamepad, accent: Theme.peach, cats: ["Game"] },
+        { name: "Dev", icon: Icons.code, accent: Theme.green, cats: ["Development", "IDE", "TextEditor"] },
+        { name: "Graphics", icon: Icons.palette, accent: Theme.mauve, cats: ["Graphics", "Photography"] },
+        { name: "Media", icon: Icons.media, accent: Theme.pink, cats: ["AudioVideo", "Audio", "Video", "Player"] },
+        { name: "Office", icon: Icons.office, accent: Theme.yellow, cats: ["Office", "Education", "Science"] },
+        { name: "Web", icon: Icons.web, accent: Theme.sapphire, cats: ["Network", "WebBrowser", "Email", "Chat", "InstantMessaging"] },
+        { name: "System", icon: Icons.cog, accent: Theme.teal, cats: ["System", "Settings", "Utility", "TerminalEmulator", "FileManager"] },
+    ]
+
     // ── Commands ──────────────────────────────────────────────────────────
+    property var terminal: ["kitty", "-e"]   // prefix for Terminal=true apps
     property var sysMonitor: ["kitty", "-e", "btop"]
     property var gpuTool: ["lact"]
     property var netTool: ["kitty", "-e", "nmtui"]

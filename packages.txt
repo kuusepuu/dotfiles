@@ -6,7 +6,7 @@ polkit-gnome
 qt5-wayland
 qt6-wayland
 
-# Shell (bar, notifications, OSD, power menu) & wallpaper
+# Shell (bar, launcher, notifications, OSD, power menu) & wallpaper
 quickshell
 hyprpaper
 
@@ -15,8 +15,7 @@ kitty
 fish
 starship
 
-# App launcher & power menu
-rofi
+# Launcher icons & lock/idle
 papirus-icon-theme
 hyprlock
 hypridle

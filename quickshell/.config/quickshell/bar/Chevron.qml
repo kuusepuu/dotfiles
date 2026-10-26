@@ -1,6 +1,6 @@
 import QtQuick
-import QtQuick.Shapes
 import qs.config
+import qs.widgets
 
 // One outlined chevron segment of the bar.
 //   side "left":   notch (or flat) on the left, tip pointing right      ▷  >
@@ -73,42 +73,15 @@ Item {
 
     readonly property real tint: Math.max(mouse.pressed ? 0.24 : hovered ? 0.13 : 0, pulse * 0.3)
 
-    Shape {
+    ChevronShape {
         id: shape
         anchors.fill: parent
-        preferredRendererType: Shape.CurveRenderer
-        containsMode: Shape.FillContains
-
-        readonly property real b: root.bw / 2
-        readonly property real w: width
-        readonly property real h: height
-        readonly property real tl: root.startEdge === "tip" ? root.k : b
-        readonly property real ml: root.startEdge === "notch" ? root.k : b
-        readonly property real tr: root.endEdge === "tip" ? w - root.k : w - b
-        readonly property real mr: root.endEdge === "notch" ? w - root.k : w - b
-
-        ShapePath {
-            strokeColor: root.accent
-            strokeWidth: root.bw
-            joinStyle: ShapePath.MiterJoin
-            fillColor: Theme.alpha(Theme.mix(Theme.base, root.accent, root.tint), Theme.bgOpacity)
-
-            Behavior on fillColor {
-                ColorAnimation { duration: Theme.animFast }
-            }
-            Behavior on strokeColor {
-                ColorAnimation { duration: Theme.animMed }
-            }
-
-            startX: shape.tl
-            startY: shape.b
-            PathLine { x: shape.tr; y: shape.b }
-            PathLine { x: shape.mr; y: shape.h / 2 }
-            PathLine { x: shape.tr; y: shape.h - shape.b }
-            PathLine { x: shape.tl; y: shape.h - shape.b }
-            PathLine { x: shape.ml; y: shape.h / 2 }
-            PathLine { x: shape.tl; y: shape.b }
-        }
+        accent: root.accent
+        fill: Theme.alpha(Theme.mix(Theme.base, root.accent, root.tint), Theme.bgOpacity)
+        bw: root.bw
+        k: root.k
+        startEdge: root.startEdge
+        endEdge: root.endEdge
     }
 
     MouseArea {

@@ -2,7 +2,7 @@
 terminal    = "kitty"
 fileManager = "thunar"
 browser     = "firefox"
-menu        = "~/.config/rofi/launcher.sh"
+menu        = "qs ipc call launcher toggle"
 mainMod     = "SUPER"
 
 require("monitors")

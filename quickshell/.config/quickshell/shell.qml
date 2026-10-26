@@ -5,6 +5,7 @@ import Quickshell
 import Quickshell.Io
 import qs.services
 import "bar"
+import "launcher"
 import "notifications"
 import "osd"
 import "powermenu"
@@ -20,6 +21,7 @@ ShellRoot {
     NotifCenter {}
     Osd {}
     PowerMenu {}
+    Launcher {}
 
     IpcHandler {
         target: "notifs"
@@ -46,6 +48,20 @@ ShellRoot {
 
         function toggle(): void {
             ShellState.powerMenuOpen = !ShellState.powerMenuOpen;
+        }
+    }
+
+    IpcHandler {
+        target: "launcher"
+
+        function toggle(): void {
+            ShellState.launcherOpen = !ShellState.launcherOpen;
+        }
+        function open(): void {
+            ShellState.launcherOpen = true;
+        }
+        function close(): void {
+            ShellState.launcherOpen = false;
         }
     }
 }

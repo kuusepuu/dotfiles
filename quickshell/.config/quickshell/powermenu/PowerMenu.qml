@@ -1,9 +1,9 @@
 import QtQuick
-import QtQuick.Shapes
 import Quickshell
 import Quickshell.Wayland
 import qs.config
 import qs.services
+import qs.widgets
 
 // Full-screen dimmed overlay with nested chevron tiles. ←/→ or 1–5 to pick, Enter to run, Esc to close.
 PanelWindow {
@@ -111,38 +111,15 @@ PanelWindow {
                     width: Math.round(185 * win.s)
                     height: tiles.h
 
-                    Shape {
+                    ChevronShape {
                         id: shape
                         anchors.fill: parent
-                        preferredRendererType: Shape.CurveRenderer
-                        containsMode: Shape.FillContains
-
-                        readonly property real b: tile.bw / 2
-                        readonly property real k: tiles.k
-                        readonly property real tl: shape.b
-                        readonly property real ml: tile.first ? shape.b : shape.k
-                        readonly property real tr: tile.last ? width - shape.b : width - shape.k
-                        readonly property real mr: width - shape.b
-
-                        ShapePath {
-                            strokeColor: tile.modelData.color
-                            strokeWidth: tile.bw
-                            joinStyle: ShapePath.MiterJoin
-                            fillColor: Theme.alpha(Theme.mix(Theme.base, tile.modelData.color, tile.sel ? 0.2 : 0), 0.95)
-
-                            Behavior on fillColor {
-                                ColorAnimation { duration: Theme.animFast }
-                            }
-
-                            startX: shape.tl
-                            startY: shape.b
-                            PathLine { x: shape.tr; y: shape.b }
-                            PathLine { x: shape.mr; y: shape.height / 2 }
-                            PathLine { x: shape.tr; y: shape.height - shape.b }
-                            PathLine { x: shape.tl; y: shape.height - shape.b }
-                            PathLine { x: shape.ml; y: shape.height / 2 }
-                            PathLine { x: shape.tl; y: shape.b }
-                        }
+                        accent: tile.modelData.color
+                        fill: Theme.alpha(Theme.mix(Theme.base, tile.modelData.color, tile.sel ? 0.2 : 0), 0.95)
+                        bw: tile.bw
+                        k: tiles.k
+                        startEdge: tile.first ? "flat" : "notch"
+                        endEdge: tile.last ? "flat" : "tip"
                     }
 
                     Column {
