@@ -1,6 +1,6 @@
 # dotfiles
 
-Hyprland + Wayland desktop configuration for Arch Linux. Includes Waybar, Kitty, Fish + Starship, rofi, tuigreet (greetd), Hyprpaper, Hyprlock + Hypridle, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, and usage) are managed by mise.
+Hyprland + Wayland desktop configuration for Arch Linux. Includes Quickshell (bar, notifications, OSD, power menu), Kitty, Fish + Starship, rofi, tuigreet (greetd), Hyprpaper, Hyprlock + Hypridle, Thunar, and fastfetch. Theme is Catppuccin Mocha throughout. Runtime versions (Node, Go, Rust, Python, Java, Kotlin, .NET, and usage) are managed by mise.
 
 ---
 

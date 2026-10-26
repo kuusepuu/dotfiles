@@ -53,7 +53,7 @@ hl.bind("XF86AudioPause", hl.dsp.exec_cmd("playerctl play-pause"), { locked = tr
 hl.bind("XF86AudioPlay",  hl.dsp.exec_cmd("playerctl play-pause"), { locked = true })
 hl.bind("XF86AudioPrev",  hl.dsp.exec_cmd("playerctl previous"),   { locked = true })
 
--- Notifications (dunst)
-hl.bind(mainMod .. " + N",         hl.dsp.exec_cmd("dunstctl close"))
-hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("dunstctl close-all"))
-hl.bind(mainMod .. " + H",         hl.dsp.exec_cmd("dunstctl history-pop"))
+-- Notifications (quickshell)
+hl.bind(mainMod .. " + N",         hl.dsp.exec_cmd("qs ipc call notifs dismissLatest"))
+hl.bind(mainMod .. " + SHIFT + N", hl.dsp.exec_cmd("qs ipc call notifs hideAll"))
+hl.bind(mainMod .. " + H",         hl.dsp.exec_cmd("qs ipc call notifs toggleCenter"))

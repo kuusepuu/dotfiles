@@ -15,7 +15,7 @@ CHOICE=$(printf "%s\n" "$LOCK" "$SUSPEND" "$LOGOUT" "$REBOOT" "$SHUTDOWN" \
 case "$CHOICE" in
     "$LOCK")     hyprlock ;;
     "$SUSPEND")  loginctl suspend ;;
-    "$LOGOUT")   hyprctl dispatch exit ;;
+    "$LOGOUT")   hyprctl dispatch 'hl.dsp.exit()' ;;
     "$REBOOT")   systemctl reboot ;;
     "$SHUTDOWN") systemctl poweroff ;;
 esac

@@ -6,8 +6,8 @@ polkit-gnome
 qt5-wayland
 qt6-wayland
 
-# Status bar & wallpaper
-waybar
+# Shell (bar, notifications, OSD, power menu) & wallpaper
+quickshell
 hyprpaper
 
 # Terminal & shell
@@ -67,9 +67,6 @@ blueman
 
 # VPN
 openfortivpn
-
-# Notifications
-dunst
 
 # Session management
 
